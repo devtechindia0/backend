@@ -1,15 +1,16 @@
+import crypto from 'crypto';
 import type { Core } from '@strapi/strapi';
 
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Admin => ({
   auth: {
-    secret: env('ADMIN_JWT_SECRET'),
+    secret: env('ADMIN_JWT_SECRET') || crypto.randomBytes(32).toString('hex'),
   },
   apiToken: {
-    salt: env('API_TOKEN_SALT'),
+    salt: env('API_TOKEN_SALT') || crypto.randomBytes(32).toString('hex'),
   },
   transfer: {
     token: {
-      salt: env('TRANSFER_TOKEN_SALT'),
+      salt: env('TRANSFER_TOKEN_SALT') || crypto.randomBytes(32).toString('hex'),
     },
   },
   secrets: {
