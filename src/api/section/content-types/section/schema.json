@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "singularName": "section",
+    "pluralName": "sections",
+    "displayName": "Section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "section_type": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "content": {
+      "type": "json"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "sections"
+    }
+  }
+}
